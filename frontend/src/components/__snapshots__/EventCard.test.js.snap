@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card displaying basic event info passes snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-9"
+      >
+        <a
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiCardActionArea-root"
+          href="/events/1"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-3"
+            >
+              <img
+                class="MuiCardMedia-root makeStyles-img-2 MuiCardMedia-media MuiCardMedia-img"
+                height="100"
+                src="www.testimg.com"
+              />
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-9"
+            >
+              <div
+                class="MuiCardContent-root"
+              >
+                <p
+                  class="MuiTypography-root makeStyles-artistName-7 MuiTypography-body1"
+                >
+                  test event
+                </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap"
+                >
+                  test venue
+                </p>
+                <p
+                  class="MuiTypography-root makeStyles-timeAndDate-6 MuiTypography-body2"
+                >
+                  Jan 1
+                </p>
+                <p
+                  class="MuiTypography-root makeStyles-timeAndDate-6 MuiTypography-body2"
+                >
+                  Fri 12:00 pm
+                </p>
+              </div>
+            </div>
+          </div>
+          <span
+            class="MuiCardActionArea-focusHighlight"
+          />
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-md-3"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <a
+            aria-disabled="false"
+            class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-5 MuiButton-outlinedPrimary MuiTypography-colorPrimary"
+            href="www.testurl.com"
+            role="button"
+            tabindex="0"
+            target="_blank"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Get Tickets
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

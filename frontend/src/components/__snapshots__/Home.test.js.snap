@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage passes snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-direction-xs-column MuiGrid-align-items-xs-center"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-9 MuiGrid-grid-md-12 MuiGrid-grid-lg-8"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
+        >
+          <div
+            class="MuiGrid-root makeStyles-headingArea-2 MuiGrid-container MuiGrid-item"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <h5
+                class="MuiTypography-root makeStyles-title-3 MuiTypography-h5"
+              >
+                test title
+              </h5>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  See All test title Events
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root makeStyles-cardContainer-4 MuiGrid-container MuiGrid-item"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <div
+                class="MuiPaper-root MuiCard-root makeStyles-root-5 MuiPaper-elevation1 MuiPaper-rounded"
+              >
+                <a
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiCardActionArea-root"
+                  href="/attraction/1"
+                  role="button"
+                  tabindex="0"
+                >
+                  <img
+                    alt="test name"
+                    class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img"
+                    height="140"
+                    src="www.testurl.com"
+                    title="test name"
+                  />
+                  <div
+                    class="MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-space-between"
+                    >
+                      <div
+                        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8"
+                      >
+                        <p
+                          class="MuiTypography-root makeStyles-artistName-6 MuiTypography-body1"
+                        >
+                          test name
+                        </p>
+                      </div>
+                      <div
+                        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body2"
+                        >
+                          10 events
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <span
+                    class="MuiCardActionArea-focusHighlight"
+                  />
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

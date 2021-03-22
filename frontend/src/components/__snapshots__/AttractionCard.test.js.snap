@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card to display basic attraction info passes snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiCardActionArea-root"
+      href="/attraction/1"
+      role="button"
+      tabindex="0"
+    >
+      <img
+        alt="test attraction"
+        class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img"
+        height="140"
+        src="www.test.com"
+        title="test attraction"
+      />
+      <div
+        class="MuiCardContent-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-space-between"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8"
+          >
+            <p
+              class="MuiTypography-root makeStyles-artistName-2 MuiTypography-body1"
+            >
+              test attraction
+            </p>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body2"
+            >
+              10 events
+            </p>
+          </div>
+        </div>
+      </div>
+      <span
+        class="MuiCardActionArea-focusHighlight"
+      />
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+  </div>
+</DocumentFragment>
+`;

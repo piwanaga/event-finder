@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User's profile page passes snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center"
+  >
+    <div
+      class="MuiGrid-root makeStyles-root-1 MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-sm-12 MuiGrid-grid-lg-8"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-item MuiGrid-direction-xs-column MuiGrid-grid-sm-8"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardContent-root"
+            >
+              <h6
+                class="MuiTypography-root MuiTypography-h6"
+              >
+                john doe
+              </h6>
+              <hr
+                class="MuiDivider-root makeStyles-divider-3"
+              />
+              <p
+                class="MuiTypography-root MuiTypography-body2"
+              >
+                Username
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                test username
+              </p>
+              <hr
+                class="MuiDivider-root makeStyles-divider-3"
+              />
+              <p
+                class="MuiTypography-root MuiTypography-body2"
+              >
+                Email Address
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                test@email.com
+              </p>
+              <hr
+                class="MuiDivider-root makeStyles-divider-3"
+              />
+            </div>
+            <div
+              class="MuiCardActions-root MuiCardActions-spacing"
+            >
+              <a
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+                href="/profile/edit"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Edit Profile
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardContent-root"
+            >
+              <div
+                class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
+              >
+                <div
+                  class="MuiGrid-root MuiGrid-item"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-h6"
+                  >
+                    Friends
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-root MuiGrid-item"
+                >
+                  <ul
+                    class="MuiList-root MuiList-padding"
+                  >
+                    <li
+                      class="MuiListItem-root MuiListItem-gutters"
+                    >
+                      <div
+                        class="MuiListItemAvatar-root"
+                      >
+                        <div
+                          class="MuiAvatar-root MuiAvatar-circle"
+                        >
+                          <img
+                            class="MuiAvatar-img"
+                            src="www.test.com"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="MuiListItemText-root"
+                      >
+                        <span
+                          class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                        >
+                          friend username
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiCardActions-root MuiCardActions-spacing"
+            >
+              <a
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+                href="/profile/friends"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  View All
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+              <a
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+                href="/users/search"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Find Friends
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardContent-root"
+            >
+              <div
+                class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
+              >
+                <div
+                  class="MuiGrid-root MuiGrid-item"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-h6"
+                  >
+                    Artists Following
+                  </h6>
+                </div>
+                <div
+                  class="MuiGrid-root MuiGrid-item"
+                >
+                  <ul
+                    class="MuiList-root MuiList-padding"
+                  >
+                    <li
+                      class="MuiListItem-root MuiListItem-gutters"
+                    >
+                      <div
+                        class="MuiListItemAvatar-root"
+                      >
+                        <div
+                          class="MuiAvatar-root MuiAvatar-circle"
+                        >
+                          <img
+                            class="MuiAvatar-img"
+                            src="www.test.com"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="MuiListItemText-root"
+                      >
+                        <span
+                          class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                        >
+                          test artist
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiCardActions-root MuiCardActions-spacing"
+            >
+              <a
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+                href="/profile/artists"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  View All
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
