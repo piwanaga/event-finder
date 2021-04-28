@@ -104,10 +104,10 @@ const EventDetail = () => {
         const newChecked = [...checked];
 
         if (currentIndex === -1) {
-        newChecked.push(username);
+            newChecked.push(username);
         } else {
-        newChecked.splice(currentIndex, 1);
-        }
+            newChecked.splice(currentIndex, 1);
+        };
 
         setChecked(newChecked);
     };
