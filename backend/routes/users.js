@@ -5,10 +5,6 @@ const User = require('../models/User');
 
 const router = new express.Router();
 
-router.get("/helloworld", async (req, res, next) => {
-    return res.json('hello world')
-})
-
 router.post("/login", async (req, res, next) => {
     try { 
         const { username, password } = req.body;

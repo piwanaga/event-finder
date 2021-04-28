@@ -1,5 +1,5 @@
 const db = require("../db");
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 const { BCRYPT_WORK_FACTOR } = require("../config");
 const { BadRequestError, UnauthorizedError } = require('../expressError');
 const { sqlForPartialUpdate } = require('../helpers/sqlForPartialUpdate');
@@ -189,7 +189,7 @@ class User {
         );
 
         return {username: username2}
-    }
+    };
 };
 
 module.exports = User;
