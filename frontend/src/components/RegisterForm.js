@@ -39,6 +39,7 @@ const RegisterForm = () => {
     };
 
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [formErr, setFormErr] = useState(false);
 
     const handleChange = evt => {
         const {name, value} = evt.target;
@@ -47,6 +48,11 @@ const RegisterForm = () => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
+        for (let key of Object.keys(formData)) {
+            if (formData[key] === '') {
+                return setFormErr(true)
+            };
+        };
         try {
             dispatch(createUser(formData));
             history.push('/');
@@ -61,6 +67,10 @@ const RegisterForm = () => {
             <Grid item container sm={8} md={4}>
                 <form className={classes.form} onSubmit={handleSubmit}>
                     <Typography className={classes.title} variant='h6'>Create a new account</Typography>
+                    {formErr ? 
+                        <Typography color='secondary' variant='subtitle1'>Cannot leave any fields blank</Typography> :
+                        null
+                    }
                     <Grid container direction='column' spacing={3}>
                         <Grid item>
                             <TextField
