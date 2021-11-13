@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { authenticateJWT } = require('./middleware/auth')
 // const requestIp = require('request-ip');
+const User = require('./models/User');
 
 const userRoutes = require("./routes/users");
 
