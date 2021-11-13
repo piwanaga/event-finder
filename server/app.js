@@ -17,7 +17,7 @@ app.use(authenticateJWT);
 //   console.log(ip)
 //   res.end(ip);
 // });
-
+app.options('*', cors())
 app.use("/users", userRoutes);
 
 app.use(function(err, req, res, next) {
