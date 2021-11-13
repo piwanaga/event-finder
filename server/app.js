@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const { authenticateJWT } = require('./middleware/auth')
 // const requestIp = require('request-ip');
 
@@ -18,7 +18,6 @@ app.use(authenticateJWT);
 //   res.end(ip);
 // });
 
-app.options('/users', cors())
 app.use("/users", userRoutes);
 
 app.use(function(err, req, res, next) {

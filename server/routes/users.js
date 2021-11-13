@@ -6,8 +6,13 @@ const User = require('../models/User');
 
 const router = new express.Router();
 
+const corsOptions = {
+    origin: 'https://event-finder.surge.sh',
+    optionsSuccessStatus: 200
+}
 
-router.post("/login", cors(), async (req, res, next) => {
+
+router.post("/login", cors(corsOptions), async (req, res, next) => {
     try { 
         const { username, password } = req.body;
         const user = await User.authenticate(username, password);
