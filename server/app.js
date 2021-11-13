@@ -25,11 +25,11 @@ app.use(authenticateJWT);
 app.post("/users/login", async (req, res, next) => {
   try { 
       const { username, password } = req.body;
-      // const user = await User.authenticate(username, password);
+      const user = await User.authenticate(username, password);
       // const token = createToken(user);
       // res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
-      console.log(res)
-      return res.json({username, password})
+      // console.log(res)
+      return res.json({user})
       // return res.json({ user, token });
   } catch (e) {
     return next(e);
