@@ -8,12 +8,9 @@ const router = new express.Router();
 router.post("/login", async (req, res, next) => {
     try { 
         const { username, password } = req.body;
-        // const user = await User.authenticate(username, password);
-        // const token = createToken(user);
-        // res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
-        // res.set('Access-Control-Allow-Origin', 'http://localhost:3000')
-        console.log('response from login route:', res)
-        // return res.json({ user, token });
+        const user = await User.authenticate(username, password);
+        const token = createToken(user);
+        return res.json({ user, token });
     } catch (e) {
       return next(e);
     };
