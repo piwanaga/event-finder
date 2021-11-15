@@ -1,12 +1,12 @@
 const express = require('express');
-const { post } = require('../app');
 const { createToken } = require('../helpers/tokens');
+const cors = require('cors');
 
 const User = require('../models/User');
 
 const router = new express.Router();
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", cors(), async (req, res, next) => {
     try { 
         res.set({
             'Access-Control-Request-Headers': 'application/json',

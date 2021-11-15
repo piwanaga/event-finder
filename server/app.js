@@ -7,7 +7,7 @@ const userRoutes = require("./routes/users");
 
 const app = express();
 
-app.use(cors())
+// app.use(cors())
 app.use(express.json());
 app.use(authenticateJWT);
 // app.use(requestIp.mw());
@@ -17,7 +17,7 @@ app.use(authenticateJWT);
 //   console.log(ip)
 //   res.end(ip);
 // });
-
+app.options('/users/login', cors())
 app.use("/users", userRoutes);
 
 app.use(function(err, req, res, next) {
