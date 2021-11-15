@@ -1,4 +1,5 @@
 const express = require('express');
+const { post } = require('../app');
 const { createToken } = require('../helpers/tokens');
 
 const User = require('../models/User');
@@ -7,6 +8,13 @@ const router = new express.Router();
 
 router.post("/login", async (req, res, next) => {
     try { 
+        res.set({
+            'Access-Control-Request-Headers': 'application/json',
+            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
+            // 'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        })
         const { username, password } = req.body;
         const user = await User.authenticate(username, password);
         const token = createToken(user);
