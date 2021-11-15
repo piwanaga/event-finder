@@ -17,9 +17,9 @@ app.use(express.json());
 //   console.log(ip)
 //   res.end(ip);
 // });
-// app.options('/users/login', cors())
-// app.use("/users", userRoutes);
 
+// app.use("/users", userRoutes);
+app.options('/users/login', cors())
 router.post("/users/login", cors(), async (req, res, next) => {
   try { 
       res.set({
