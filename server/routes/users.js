@@ -7,7 +7,6 @@ const router = new express.Router();
 
 router.post("/login", async (req, res, next) => {
     try { 
-        console.log(process.env)
         const { username, password } = req.body;
         const user = await User.authenticate(username, password);
         const token = createToken(user);
