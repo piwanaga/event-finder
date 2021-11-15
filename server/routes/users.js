@@ -17,7 +17,7 @@ router.post("/login", async (req, res, next) => {
         const { username, password } = req.body;
         // const user = await User.authenticate(username, password);
         // const token = createToken(user);
-        res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
+        res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh/')
         // res.set('Access-Control-Allow-Origin', 'http://localhost:3000')
         console.log('response from route:', res)
         // return res.json({ user, token });
