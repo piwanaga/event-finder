@@ -8,7 +8,7 @@ const userRoutes = require("./routes/users");
 
 const app = express();
 
-app.use(cors())
+
 app.use(express.json());
 app.use(authenticateJWT);
 // app.use(requestIp.mw());
@@ -20,7 +20,9 @@ app.use(authenticateJWT);
 // });
 
 app.options('*', cors())
-
+app.use(cors({
+  credentials: true
+}))
 app.use("/users", userRoutes);
 
 // app.post("/users/login", async (req, res, next) => {
