@@ -19,7 +19,7 @@ app.use(authenticateJWT);
 //   res.end(ip);
 // });
 
-app.options('*', cors())
+// app.options('*', cors())
 app.use(cors({
   credentials: true
 }))
