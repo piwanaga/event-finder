@@ -18,7 +18,7 @@ router.post("/login", async (req, res, next) => {
         // const user = await User.authenticate(username, password);
         // const token = createToken(user);
         res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
-        console.log(res)
+        console.log('results from route:', res)
         // return res.json({ user, token });
     } catch (e) {
       return next(e);

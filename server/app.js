@@ -21,21 +21,21 @@ app.use(authenticateJWT);
 
 // app.options('*', cors())
 
-// app.use("/users", userRoutes);
+app.use("/users", userRoutes);
 
-app.post("/users/login", async (req, res, next) => {
-  try { 
-      const { username, password } = req.body;
-      const user = await User.authenticate(username, password);
-      // const token = createToken(user);
-      // res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
-      // console.log(res)
-      return res.json({user})
-      // return res.json({ user, token });
-  } catch (e) {
-    return next(e);
-  };
-});
+// app.post("/users/login", async (req, res, next) => {
+//   try { 
+//       const { username, password } = req.body;
+//       const user = await User.authenticate(username, password);
+//       // const token = createToken(user);
+//       // res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
+//       // console.log(res)
+//       return res.json({user})
+//       // return res.json({ user, token });
+//   } catch (e) {
+//     return next(e);
+//   };
+// });
 
 app.use(function(err, req, res, next) {
     const status = err.status || 500;
