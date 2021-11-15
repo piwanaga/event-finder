@@ -20,7 +20,7 @@ app.use(express.json());
 
 // app.use("/users", userRoutes);
 app.options('/users/login', cors())
-router.post("/users/login", cors(), async (req, res, next) => {
+app.post("/users/login", cors(), async (req, res, next) => {
   try { 
       res.set({
           'Access-Control-Request-Headers': 'application/json',
