@@ -58,9 +58,7 @@ const createdUser = user => {
 export const loginUser = data => {
     return async dispatch => {
         try {
-            console.log('Base URL in action creators:', BASE_URL)
             const res = await axios.post(`${BASE_URL}/users/login`, data);
-            console.log('result in action creator:', res)
             localStorage.setItem('token', JSON.stringify(res.data.token));
             dispatch(loggedInUser(res.data.user));
         } catch (e) {

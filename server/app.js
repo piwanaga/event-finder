@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors())
 app.use(express.json());
-app.use(authenticateJWT);
+// app.use(authenticateJWT);
 // app.use(requestIp.mw());
 
 // app.use(function(req, res) {
@@ -24,20 +24,6 @@ app.use(authenticateJWT);
 //   credentials: true
 // }))
 app.use("/users", userRoutes);
-
-// app.post("/users/login", async (req, res, next) => {
-//   try { 
-//       const { username, password } = req.body;
-//       const user = await User.authenticate(username, password);
-//       // const token = createToken(user);
-//       // res.set('Access-Control-Allow-Origin', 'https://event-finder.surge.sh')
-//       // console.log(res)
-//       return res.json({user})
-//       // return res.json({ user, token });
-//   } catch (e) {
-//     return next(e);
-//   };
-// });
 
 app.use(function(err, req, res, next) {
     const status = err.status || 500;
