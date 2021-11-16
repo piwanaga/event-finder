@@ -22,12 +22,12 @@ class User {
     
         if (user) {
           // compare hashed password to a new hash from password
-        //   const isValid = await bcrypt.compare(password, user.password);
-        //   if (isValid === true) {
-        //     delete user.password;
-        //     return user;
-        //   };
-        return user
+          const isValid = await bcrypt.compare(password, user.password);
+          if (isValid === true) {
+            delete user.password;
+            return user;
+          };
+        // return user
         };
         throw new UnauthorizedError("Invalid username/password");
     };
