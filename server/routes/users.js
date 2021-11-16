@@ -2,18 +2,18 @@ const express = require('express');
 const { createToken } = require('../helpers/tokens');
 const cors = require('cors');
 const User = require('../models/User');
-// const app = require('../app');
 
 const router = new express.Router();
+const headers = {
+    'Access-Control-Request-Headers': 'application/json',
+    'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
+    'Access-Control-Allow-Methods': 'POST',
+    'Access-Control-Allow-Headers': 'Content-Type'
+}
 
 router.post("/login", cors(), async (req, res, next) => {
     try { 
-        res.set({
-            'Access-Control-Request-Headers': 'application/json',
-            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers': 'Content-Type'
-        })
+        res.set(headers)
         const { username, password } = req.body;
         const user = await User.authenticate(username, password);
         const token = createToken(user);
@@ -39,12 +39,7 @@ router.post('/register', async (req, res, next) => {
 
 router.get('/:username', cors(), async (req, res, next) => {
     try {
-        res.set({
-            'Access-Control-Request-Headers': 'application/json',
-            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers': 'Content-Type'
-        })
+        res.set(headers)
         const user = await User.fetch(req.params.username);
         return res.json({ user });
     } catch (e) {
@@ -63,12 +58,7 @@ router.patch('/:username', async (req, res, next) => {
 
 router.post('/:username/artists', cors(), async (req, res, next) => {
     try {
-        res.set({
-            'Access-Control-Request-Headers': 'application/json',
-            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers': 'Content-Type'
-        })
+        res.set(headers)
         const artist = await User.addArtist(req.body);
         return res.json({ artist });
     } catch (e) {
@@ -78,12 +68,7 @@ router.post('/:username/artists', cors(), async (req, res, next) => {
 
 router.delete('/:username/artists', cors(), async (req, res, next) => {
     try {
-        res.set({
-            'Access-Control-Request-Headers': 'application/json',
-            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers': 'Content-Type'
-        })
+        res.set(headers)
         const id = await User.removeArtist(req.body);
         return res.json(id);
     } catch (e) {

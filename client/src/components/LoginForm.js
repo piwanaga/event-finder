@@ -87,7 +87,7 @@ const LoginForm = () => {
                     <div className='mb-3'>
                         <label htmlFor='password' className='block text-sm text-gray-700 mb-1'>Password</label>
                         <input 
-                            type='text' 
+                            type='password' 
                             name='password' 
                             id='password'
                             maxLength='25' 

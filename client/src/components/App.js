@@ -8,8 +8,6 @@ import Footer from './Footer';
 const App = () => {
   const dispatch = useDispatch();
   const storedToken = localStorage.getItem('token') || null;
-  // const user = useSelector(store => store.userReducer.user);
-  // const musicAttractions = useSelector(store => store.attractionsReducer.attractionsHome.music.attractions)
 
   // const getLocation = () => {
   //   if (navigator.geolocation) {

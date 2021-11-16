@@ -1,19 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeArtist } from '../actions/actionCreators';
 
-const FavoriteArtistsList = () => {
-    const dispatch = useDispatch();
-    const user = useSelector(store => store.userReducer.user);
-    const artists = user.artists;
-
-    const handleUnfollow = id => {
-        dispatch(removeArtist({
-            id: id,
-            username: user.username
-        }));
-    };
-
+const FavoriteArtistsList = ({artists, handleUnfollow}) => { 
     return (
         <>
         {artists ?
