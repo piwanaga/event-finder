@@ -1,7 +1,6 @@
 const express = require('express');
 const { createToken } = require('../helpers/tokens');
 const cors = require('cors');
-
 const User = require('../models/User');
 
 const router = new express.Router();
@@ -11,7 +10,6 @@ router.post("/login", cors(), async (req, res, next) => {
         res.set({
             'Access-Control-Request-Headers': 'application/json',
             'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
-            // 'Access-Control-Allow-Origin': 'http://localhost:3000',
             'Access-Control-Allow-Methods': 'POST',
             'Access-Control-Allow-Headers': 'Content-Type'
         })
@@ -22,7 +20,7 @@ router.post("/login", cors(), async (req, res, next) => {
     } catch (e) {
       return next(e);
     };
-});
+  });
 
 router.post('/register', async (req, res, next) => {
     try {
