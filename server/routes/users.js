@@ -2,9 +2,10 @@ const express = require('express');
 const { createToken } = require('../helpers/tokens');
 const cors = require('cors');
 const User = require('../models/User');
+const app = require('../app');
 
 const router = new express.Router();
-
+app.options('/users/login', cors())
 router.post("/login", cors(), async (req, res, next) => {
     try { 
         res.set({
