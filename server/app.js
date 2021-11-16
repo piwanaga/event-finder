@@ -9,7 +9,7 @@ const { authenticateJWT } = require('./middleware/auth')
 
 const app = express();
 
-// app.use(cors())
+app.use(cors())
 app.use(express.json());
 app.use(authenticateJWT);
 // app.use(requestIp.mw());
