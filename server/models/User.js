@@ -27,7 +27,6 @@ class User {
             delete user.password;
             return user;
           };
-        // return user
         };
         throw new UnauthorizedError("Invalid username/password");
     };
