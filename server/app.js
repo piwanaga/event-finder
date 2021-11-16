@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { authenticateJWT } = require('./middleware/auth')
 // const { createToken } = require('../helpers/tokens');
-// const User = require('./models/User');
+const User = require('./models/User');
 // const requestIp = require('request-ip');
 
 // const userRoutes = require("./routes/users");
@@ -32,10 +32,11 @@ app.post("/users/login", cors(), async (req, res, next) => {
           'Access-Control-Allow-Headers': 'Content-Type'
       })
       const { username, password } = req.body;
-      // const user = await User.authenticate(username, password);
+      const user = await User.authenticate(username, password);
       // const token = createToken(user);
+      return res.json({ user});
       // return res.json({ user, token });
-      return res.json({ username, password });
+      // return res.json({ username, password });
   } catch (e) {
     return next(e);
   };
