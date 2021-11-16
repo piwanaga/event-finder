@@ -32,11 +32,11 @@ app.post("/users/login", cors(), async (req, res, next) => {
           'Access-Control-Allow-Headers': 'Content-Type'
       })
       const { username, password } = req.body;
-      const user = await User.authenticate(username, password);
+      // const user = await User.authenticate(username, password);
       // const token = createToken(user);
-      return res.json({ user});
+      // return res.json({ user});
       // return res.json({ user, token });
-      // return res.json({ username, password });
+      return res.json({ username, password });
   } catch (e) {
     return next(e);
   };
