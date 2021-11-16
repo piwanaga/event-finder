@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { authenticateJWT } = require('./middleware/auth')
-// const { createToken } = require('../helpers/tokens');
+const { createToken } = require('../helpers/tokens');
 const User = require('./models/User');
 // const requestIp = require('request-ip');
 
