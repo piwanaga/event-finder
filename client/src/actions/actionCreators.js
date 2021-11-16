@@ -35,10 +35,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 export const createUser = user => {
     return async dispatch => {
         try {
-            const res = await axios.post(`${BASE_URL}/users/register`, user, 
-                {headers: 
-                    {'Content-Type': 'application/json'}
-                });
+            const res = await axios.post(`${BASE_URL}/users/register`, user);
             localStorage.setItem('token', JSON.stringify(res.data.token));
             dispatch(createdUser(res.data.user));
         } catch (e) {
@@ -61,7 +58,10 @@ const createdUser = user => {
 export const loginUser = data => {
     return async dispatch => {
         try {
-            const res = await axios.post(`${BASE_URL}/users/login`, data);
+            const res = await axios.post(`${BASE_URL}/users/login`, data, 
+            {headers: 
+                {'Content-Type': 'application/json'}
+            });
             localStorage.setItem('token', JSON.stringify(res.data.token));
             dispatch(loggedInUser(res.data.user));
         } catch (e) {
