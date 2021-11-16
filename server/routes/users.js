@@ -37,8 +37,14 @@ router.post('/register', async (req, res, next) => {
     };
 });
 
-router.get('/:username', async (req, res, next) => {
+router.get('/:username', cors(), async (req, res, next) => {
     try {
+        res.set({
+            'Access-Control-Request-Headers': 'application/json',
+            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        })
         const user = await User.fetch(req.params.username);
         return res.json({ user });
     } catch (e) {
@@ -55,8 +61,14 @@ router.patch('/:username', async (req, res, next) => {
     };
 });
 
-router.post('/:username/artists', async (req, res, next) => {
+router.post('/:username/artists', cors(), async (req, res, next) => {
     try {
+        res.set({
+            'Access-Control-Request-Headers': 'application/json',
+            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        })
         const artist = await User.addArtist(req.body);
         return res.json({ artist });
     } catch (e) {
@@ -64,8 +76,14 @@ router.post('/:username/artists', async (req, res, next) => {
     };
 });
 
-router.delete('/:username/artists', async (req, res, next) => {
+router.delete('/:username/artists', cors(), async (req, res, next) => {
     try {
+        res.set({
+            'Access-Control-Request-Headers': 'application/json',
+            'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        })
         const id = await User.removeArtist(req.body);
         return res.json(id);
     } catch (e) {
