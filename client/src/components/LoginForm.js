@@ -1,13 +1,15 @@
 /**Login form */
 
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../actions/actionCreators';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const user = useSelector(store => store.userReducer.user);
+    let timeout
 
     const INITIAL_STATE = {
         username: '',
@@ -19,6 +21,15 @@ const LoginForm = () => {
     const [formData, setFormData] = useState(INITIAL_STATE);
     // const [formErr, setFormErr] = useState(false);
 
+    useEffect(() => {
+        if (user.loggedIn) {
+            navigate('/')
+        }
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [user.loggedIn, navigate, timeout])
+
     const validateForm = () => {
         let validForm = true
         if (!formData.username) {
@@ -28,7 +39,7 @@ const LoginForm = () => {
           validForm = false
         } else {
           setFormData(data => ({
-            ...data, firstNameError: ''
+            ...data, usernameError: ''
           }))
         }
         if (!formData.password) {
@@ -36,6 +47,10 @@ const LoginForm = () => {
             ...data, passwordError: 'Password cannot be blank'
           }))
           validForm = false
+        } else {
+            setFormData(data => ({
+              ...data, passwordError: ''
+            }))
         }
         return validForm
     };
@@ -45,22 +60,28 @@ const LoginForm = () => {
         setFormData(data => ({...data, [name]: value}));
     };
 
+    const checkCredentials = () => {
+        timeout = setTimeout(() => {
+            if (!user.loggedIn) {
+                setFormData(data => ({
+                    ...data, usernameError: 'Invalid username/password', passwordError: 'Invalid username/password'
+                }))
+            } 
+        }, 1000)
+        
+    }
+
     const handleSubmit = evt => {
         evt.preventDefault();
         let isValidForm = validateForm()
         if (isValidForm) {
-            try {
-                dispatch(loginUser(
-                    {
-                        username: formData.username,
-                        password: formData.password
-                    }
-                ));
-                navigate('/');
-            } catch(e) {
-                console.log(e)
-                return e
-            };
+            dispatch(loginUser(
+                {
+                    username: formData.username,
+                    password: formData.password
+                }
+            ));   
+            checkCredentials();
         }
     };
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUser, getAttractions } from '../actions/actionCreators';
 import RoutesComponent from './RoutesComponent';
 import Header from './Header';
@@ -8,6 +8,7 @@ import Footer from './Footer';
 const App = () => {
   const dispatch = useDispatch();
   const storedToken = localStorage.getItem('token') || null;
+  const user = useSelector(store => store.userReducer.user);
 
   // const getLocation = () => {
   //   if (navigator.geolocation) {
@@ -27,7 +28,7 @@ const App = () => {
     };
     // getLocation()
     dispatch(getAttractions());
-  }, [storedToken, dispatch]);
+  }, [storedToken, dispatch, user.loggedIn]);
 
   return (
     <div className='flex flex-col min-h-screen'>
