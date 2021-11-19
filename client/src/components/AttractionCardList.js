@@ -23,7 +23,7 @@ const AttractionCardList = ({ title, attractions }) => {
 
     return (
         <div className='w-full flex flex-col items-center'>
-            <div className='lg:w-5/6 xl:w-4/5'>
+            <div>
                 <div className='mb-4 text-xl'>
                     <h3 className='font-bold'>{title}</h3>
                 </div>

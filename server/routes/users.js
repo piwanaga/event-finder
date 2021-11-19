@@ -14,8 +14,8 @@ const headers = {
 router.post("/login", cors(), async (req, res, next) => {
     try { 
         res.set(headers)
-        const { username, password } = req.body;
-        const user = await User.authenticate(username, password);
+        const { email, password } = req.body;
+        const user = await User.authenticate(email, password);
         const token = createToken(user);
         return res.json({ user, token });
     } catch (e) {
@@ -23,9 +23,10 @@ router.post("/login", cors(), async (req, res, next) => {
     };
   });
 
-router.post('/register', async (req, res, next) => {
+router.post('/register', cors(), async (req, res, next) => {
     try {
         // create token with username
+        res.set(headers)
         const user = await User.create(req.body)
         const token = createToken(user);
         return res.json({ user, token })

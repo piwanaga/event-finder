@@ -39,7 +39,6 @@ const EventFilters = ({ attractionId }) => {
     const handleChange = evt => {
         const {name, value} = evt.target;
         setFilterData(data => ({...data, [name]: value}))
-        console.log(filterData)
     };
 
     const handleSubmit = evt => {

@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUser, getAttractions } from '../actions/actionCreators';
+import React from 'react';
 import RoutesComponent from './RoutesComponent';
 import Header from './Header';
 import Footer from './Footer';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const storedToken = localStorage.getItem('token') || null;
-  const user = useSelector(store => store.userReducer.user);
-
   // const getLocation = () => {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(showPosition);
@@ -21,14 +15,6 @@ const App = () => {
   // const showPosition = pos => {
   //   console.log(`latitude: ${pos.coords.latitude}, longitude: ${pos.coords.longitude}`)
   // }
-
-  useEffect(() => {
-    if (storedToken) {
-      dispatch(getUser(storedToken));
-    };
-    // getLocation()
-    dispatch(getAttractions());
-  }, [storedToken, dispatch, user.loggedIn]);
 
   return (
     <div className='flex flex-col min-h-screen'>

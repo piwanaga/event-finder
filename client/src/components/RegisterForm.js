@@ -1,204 +1,198 @@
 /**Register form */
 
-// import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { Link, useHistory } from 'react-router-dom';
-// import { Button, Grid, TextField, makeStyles, Typography } from '@material-ui/core';
-// import { createUser } from '../actions/actionCreators';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUser } from '../actions/actionCreators';
 
-// const useStyles = makeStyles(theme => ({
-//     root: {
-//         padding: '0px 10px'
-//     },
-//     form: {
-//         width: '100%',
-//         marginTop: 50,
-//         backgroundColor: theme.palette.common.white,
-//         padding: 30,
-//         borderRadius: theme.shape.borderRadius
-//     },
-//     title: {
-//         margin: '25px 0px'
-//     },
-//     loginLink: {
-//         color: theme.palette.grey[600]
-//     }
-// }));
+const RegisterForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(store => store.userReducer.user);
+    let timeout
 
-// const RegisterForm = () => {
-//     const classes = useStyles();
-//     const dispatch = useDispatch();
-//     const history = useHistory();
+    const INITIAL_STATE = {
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        usernameError: '',
+        passwordError: '',
+        firstNameError: '',
+        lastNameError: ''
+    };
 
-//     const INITIAL_STATE = {
-//         firstName: '',
-//         lastName: '',
-//         email: '',
-//         username: '',
-//         password: '',
-//         firstNameError: '',
-//         lastNameError: '',
-//         emailError: '',
-//         usernameError: '',
-//         passwordError        
-//     };
+    const [formData, setFormData] = useState(INITIAL_STATE);
 
-//     const validateForm = () => {
-//         let validForm = true
-//         if (!formData.firstName) {
-//           setFormData(data => ({
-//             ...data, firstNameError: 'First name cannot be blank'
-//           }))
-//           validForm = false
-//         } else {
-//           setFormData(data => ({
-//             ...data, firstNameError: ''
-//           }))
-//         }
-//         if (!formData.lastName) {
-//           setFormData(data => ({
-//             ...data, lastNameError: 'Last name cannot be blank'
-//           }))
-//           validForm = false
-//         } else {
-//           setFormData(data => ({
-//             ...data, lastNameError: ''
-//           }))
-//         }
-//         if (!formData.email) {
-//           setFormData(data => ({
-//             ...data, emailError: 'Email cannot be blank'
-//           }))
-//           validForm = false
-//         } else {
-//           setFormData(data => ({
-//             ...data, emailError: ''
-//           }))
-//         }
-//         if (!formData.username) {
-//           setFormData(data => ({
-//             ...data, usernameError: 'Username cannot be blank'
-//           }))
-//           validForm = false
-//         } else {
-//           setFormData(data => ({
-//             ...data, phoneError: ''
-//           }))
-//         }
-//         if (!formData.password) {
-//             setFormData(data => ({
-//               ...data, passwordError: 'Password cannot be blank'
-//             }))
-//             validForm = false
-//           } else {
-//             setFormData(data => ({
-//               ...data, passwordError: ''
-//             }))
-//         return validForm
-//       };
+    useEffect(() => {
+        if (user.loggedIn) {
+            navigate('/')
+        }
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [user.loggedIn, navigate, timeout])
 
-//     const [formData, setFormData] = useState(INITIAL_STATE);
-//     const [formErr, setFormErr] = useState(false);
+    const validateForm = () => {
+        let validForm = true
+        if (!formData.email) {
+          setFormData(data => ({
+            ...data, usernameError: 'Email cannot be blank'
+          }))
+          validForm = false
+        } else {
+          setFormData(data => ({
+            ...data, usernameError: ''
+          }))
+        }
+        if (!formData.password) {
+          setFormData(data => ({
+            ...data, passwordError: 'Password cannot be blank'
+          }))
+          validForm = false
+        } else {
+            setFormData(data => ({
+              ...data, passwordError: ''
+            }))
+        }
+        if (!formData.firstName) {
+          setFormData(data => ({
+            ...data, firstNameError: 'First name cannot be blank'
+          }))
+          validForm = false
+        } else {
+            setFormData(data => ({
+              ...data, firstNameError: ''
+            }))
+        }
+        if (!formData.lastName) {
+          setFormData(data => ({
+            ...data, lastNameError: 'Last name cannot be blank'
+          }))
+          validForm = false
+        } else {
+            setFormData(data => ({
+              ...data, lastNameError: ''
+            }))
+        }
+        return validForm
+    };
 
-//     const handleChange = evt => {
-//         const {name, value} = evt.target;
-//         setFormData(data => ({...data, [name]: value}));
-//     };
+    const handleChange = evt => {
+        const {name, value} = evt.target;
+        setFormData(data => ({...data, [name]: value}));
+    };
 
-//     const handleSubmit = evt => {
-//         evt.preventDefault();
-//         for (let key of Object.keys(formData)) {
-//             if (formData[key] === '') {
-//                 return setFormErr(true)
-//             };
-//         };
-//         try {
-//             dispatch(createUser(formData));
-//             history.push('/');
-//         } catch(e) {
-//             console.log(e)
-//             return e
-//         };
-//     };
+    const checkCredentials = () => {
+        timeout = setTimeout(() => {
+            if (!user.loggedIn) {
+                setFormData(data => ({
+                    ...data, usernameError: 'There is already an account using this email address'
+                }))
+            } 
+        }, 1000)
+        
+    }
 
-//     return (
-//         <Grid container justify='center' direction='row' className={classes.root}>
-//             <Grid item container sm={8} md={4}>
-//                 <form className={classes.form} onSubmit={handleSubmit}>
-//                     <Typography className={classes.title} variant='h6'>Create a new account</Typography>
-//                     {formErr ? 
-//                         <Typography color='secondary' variant='subtitle1'>Cannot leave any fields blank</Typography> :
-//                         null
-//                     }
-//                     <Grid container direction='column' spacing={3}>
-//                         <Grid item>
-//                             <TextField
-//                                 id='username'
-//                                 name='username'
-//                                 value={formData.username}
-//                                 onChange={handleChange}
-//                                 variant='outlined'
-//                                 label='Username'
-//                                 fullWidth
-//                             />
-//                         </Grid>
-//                         <Grid item>
-//                             <TextField
-//                                 id='password'
-//                                 name='password'
-//                                 type='password'
-//                                 value={formData.password}
-//                                 onChange={handleChange}
-//                                 variant='outlined'
-//                                 label='Password'
-//                                 fullWidth
-//                             />
-//                         </Grid>
-//                         <Grid item>
-//                             <TextField
-//                                 id='firstName'
-//                                 name='firstName'
-//                                 value={formData.firstName}
-//                                 onChange={handleChange}
-//                                 variant='outlined'
-//                                 label='First Name'
-//                                 fullWidth
-//                             />
-//                         </Grid>
-//                         <Grid item>
-//                             <TextField
-//                                 id='lastName'
-//                                 name='lastName'
-//                                 value={formData.lastName}
-//                                 onChange={handleChange}
-//                                 variant='outlined'
-//                                 label='Last Name'
-//                                 fullWidth
-//                             />
-//                         </Grid>
-//                         <Grid item>
-//                             <TextField
-//                                 id='email'
-//                                 name='email'
-//                                 value={formData.email}
-//                                 onChange={handleChange}
-//                                 variant='outlined'
-//                                 label='Email'
-//                                 fullWidth
-//                             />
-//                         </Grid>
-//                         <Grid item container direction='row' justify='space-between'>
-//                             <Button type='submit' color='primary'>Register!</Button>
-//                             <Button component={ Link } to='/' color='secondary'>Cancel</Button>
-//                         </Grid>
-//                         <Grid item>
-//                             <Typography className={classes.loginLink} variant='body2' component={ Link } to='/login'>Already a member? Login here</Typography>
-//                         </Grid>
-//                     </Grid>
-//                 </form>
-//             </Grid>
-//         </Grid>
-//     );
-// };
+    const handleSubmit = evt => {
+        evt.preventDefault();
+        let isValidForm = validateForm()
+        if (isValidForm) {
+            dispatch(createUser(
+                {
+                    email: formData.email,
+                    password: formData.password,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName
+                }
+            ));   
+            checkCredentials();
+        }
+    };
 
-// export default RegisterForm
+    return (
+        <div className='flex justify-center px-3'>
+            <div className='w-full sm:w-3/4 md:w-1/2 lg:w-5/12 xl:w-1/3'>
+                <div className='border border-gray-300 shadow-lg rounded bg-white px-10 py-14'>
+                    <h1 className='text-2xl font-semibold'>Almost There!</h1>
+                    <h3 className='text mb-10 text-gray-700'>Sign up with EventFinder and stay up to date with what's going on around you. </h3>
+                    <h5 className='text-sm mb-10 text-gray-700'>Already a member?  
+                        <span className='text-blue-500 font-semibold'>
+                            <Link to='/login'> Login</Link>
+                        </span>
+                    </h5>
+                    <form onSubmit={handleSubmit} className=''>
+                        <div className='mb-5'>
+                            <label htmlFor='email' className='block text-sm text-gray-700 mb-1'>Email Address</label>
+                            <input 
+                                type='text' 
+                                name='email' 
+                                id='email'
+                                maxLength='25' 
+                                value={formData.email}
+                                onChange={handleChange}
+                                className='w-full border-gray-300 rounded focus:border-blue-400 focus:ring-blue-500 focus:ring-opacity-50' />
+                            {formData.usernameError ? 
+                                <p className='text-xs text-red-500 mt-1'>{formData.usernameError}</p> :
+                                null
+                            }
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='password' className='block text-sm text-gray-700 mb-1'>Password</label>
+                            <input 
+                                type='password' 
+                                name='password' 
+                                id='password'
+                                maxLength='25' 
+                                value={formData.password}
+                                onChange={handleChange}
+                                className='w-full border-gray-300 rounded shadow-sm focus:border-blue-400 focus:ring-blue-500 focus:ring-opacity-50' />
+                            {formData.passwordError ? 
+                                <p className='text-xs text-red-500 mt-1'>{formData.passwordError}</p> :
+                                null
+                            }
+                        </div>
+                        <div className='sm:grid sm:grid-cols-2 sm:gap-8'>
+                            <div className='mb-3'>
+                                <label htmlFor='firstName' className='block text-sm text-gray-700 mb-1'>First Name</label>
+                                <input 
+                                    type='text' 
+                                    name='firstName' 
+                                    id='firstName'
+                                    maxLength='25' 
+                                    value={formData.firstName}
+                                    onChange={handleChange}
+                                    className='w-full border-gray-300 rounded shadow-sm focus:border-blue-400 focus:ring-blue-500 focus:ring-opacity-50' />
+                                {formData.firstNameError ? 
+                                    <p className='text-xs text-red-500 mt-1'>{formData.firstNameError}</p> :
+                                    null
+                                }
+                            </div>
+                            <div className='mb-3'>
+                                <label htmlFor='lastName' className='block text-sm text-gray-700 mb-1'>Last Name</label>
+                                <input 
+                                    type='text' 
+                                    name='lastName' 
+                                    id='lastName'
+                                    maxLength='25' 
+                                    value={formData.lastName}
+                                    onChange={handleChange}
+                                    className='w-full border-gray-300 rounded shadow-sm focus:border-blue-400 focus:ring-blue-500 focus:ring-opacity-50' />
+                                {formData.lastNameError ? 
+                                    <p className='text-xs text-red-500 mt-1'>{formData.lastNameError}</p> :
+                                    null
+                                }
+                            </div>
+                        </div>
+                            <button
+                                className='text-white uppercase tracking-wider bg-blue-500 mt-4 py-3 rounded w-full hover:bg-blue-600  focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-50 active:bg-blue-600' >
+                                    Sign Up
+                            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
+};
+
+export default RegisterForm

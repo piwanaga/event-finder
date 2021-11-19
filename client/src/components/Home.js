@@ -2,21 +2,45 @@
  * - renders AttractionCardList
  */
 
- import React from 'react';
- import { useSelector } from 'react-redux'; 
- import AttractionCardList from './AttractionCardList';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; 
+import { getUser, getAttractions } from '../actions/actionCreators';
+import AttractionCardList from './AttractionCardList';
+import FavoriteArtistsHome from './FavoriteArtistsHome';
+import EventsSearchResultsHome from './EventSearchResultsHome';
 
- 
 const Home = () => {
+    const dispatch = useDispatch();
     const attractions = useSelector(store => store.attractionsReducer.attractionsHome);
+    const user = useSelector(store => store.userReducer.user);
+    const storedToken = localStorage.getItem('token') || null;
+
+    useEffect(() => {
+        if (storedToken) {
+          dispatch(getUser(storedToken));
+        };
+        // getLocation()
+        dispatch(getAttractions());
+      }, [storedToken, dispatch, user.loggedIn]);
+
     return (
-        <div className='flex flex-col items-center'>
-            <div className='w-full px-3'>
-            {Object.keys(attractions).map(a => (
-                <div key={a} className='mb-10'>
-                    <AttractionCardList title={attractions[a].title} attractions={attractions[a].attractions} />
-                </div>
-            ))}
+        <div className='flex justify-center w-full'>
+            <div className='px-3 flex flex-col lg:w-5/6 xl:w-2/3'>
+                
+                    {Object.keys(attractions).map(a => (
+                        <div key={a} className='mb-10 w-full'>
+                            <AttractionCardList title={attractions[a].title} attractions={attractions[a].attractions} />
+                        </div>
+                    ))}
+                
+                    {user.artists ? 
+                        user.artists.length ?
+                            <div className='mb-10 w-full'>
+                                <FavoriteArtistsHome artists={user.artists}/>
+                            </div> :
+                            null :
+                        null
+                    } 
             </div>
         </div>
     )

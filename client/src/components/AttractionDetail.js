@@ -32,7 +32,7 @@ const AttractionDetail = () => {
         dispatch(getAttractionDetails(attractionId));
         dispatch(searchEvents({attractionId}));
         if (user.loggedIn) setIsFollowing(user.artists.map(a => a.id).includes(attractionId));
-    }, [attractionId, dispatch, user.loggedIn, user.artists]);
+    }, [attractionId, dispatch, user.loggedIn, user.artists, attraction.details]);
 
     const handleFollow = () => {
         if (user.loggedIn) {
@@ -40,7 +40,7 @@ const AttractionDetail = () => {
                 id: attractionId,
                 name: attraction.name,
                 photoUrl: attraction.images[2].url,
-                username: user.username
+                username: user.email
             }));
             setIsFollowing(true);
         } else {
@@ -51,7 +51,7 @@ const AttractionDetail = () => {
     const handleUnfollow = () => {
         dispatch(removeArtist({
             id: attractionId,
-            username: user.username
+            username: user.email
         }));
         setIsFollowing(false);
     };
@@ -96,7 +96,10 @@ const AttractionDetail = () => {
                     </div>
                 </div>
                 <div className='w-full mt-10'>
-                    <EventSearchResults attractionId={attraction.id} attractionName={attraction.name}/>
+                    {attraction.id === attractionId ?
+                        <EventSearchResults attractionId={attraction.id} attractionName={attraction.name}/> :
+                        null
+                    }
                 </div>
             </div>
         </div> :

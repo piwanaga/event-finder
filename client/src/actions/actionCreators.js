@@ -186,47 +186,6 @@ const removedArtist = id => {
     };
 };
 
-// /**Add friend
-//  * - make post request to backend with friend user data
-//  */
-// export const addFriend = data => {
-//     return async dispatch => {
-//         try {
-//             const res = await axios.post(`${BASE_URL}/users/${data.username}/friends`, data);
-//             dispatch(addedFriend(res.data.newFriend));
-//         } catch (e) {
-//             console.log(e)
-//             return e
-//         };
-//     };
-// };
-
-// const addedFriend = newFriend => {
-//     return {
-//         type: ADD_FRIEND,
-//         newFriend
-//     };
-// };
-
-// export const removeFriend = data => {
-//     return async dispatch => {
-//         try {
-//             const res = await axios.delete(`${BASE_URL}/users/${data.username}/friends`, {data});
-//             dispatch(removedFriend(res.data.username));
-//         } catch (e) {
-//             console.log(e)
-//             return e
-//         };
-//     };
-// };
-
-// const removedFriend = username => {
-//     return {
-//         type: REMOVE_FRIEND,
-//         username
-//     };
-// };
-
 /**Search actions 
  * - handle search
  * - load more results

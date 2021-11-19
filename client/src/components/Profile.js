@@ -9,7 +9,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeArtist } from '../actions/actionCreators';
-import FavoriteArtistsList from './FavoriteArtistsList';
+import FavoriteArtistsProfile from './FavoriteArtistsProfile';
 
 
 const Profile = () => {
@@ -20,14 +20,14 @@ const Profile = () => {
     const handleUnfollow = id => {
         dispatch(removeArtist({
             id: id,
-            username: user.username
+            username: user.email
         }));
     };
 
     return (
         <div className='flex justify-center px-3'>
             <div className='w-full md:w-4/5 lg:w-4/6 xl:w-3/5'>
-                <FavoriteArtistsList artists={artists} handleUnfollow={handleUnfollow}/>
+                <FavoriteArtistsProfile artists={artists} handleUnfollow={handleUnfollow}/>
             </div>
             
         </div>

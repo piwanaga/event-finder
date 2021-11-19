@@ -6,16 +6,15 @@ const { sqlForPartialUpdate } = require('../helpers/sqlForPartialUpdate');
 
 class User {
     // Authenticate user and return user details
-    static async authenticate(username, password) {
+    static async authenticate(email, password) {
         const result = await db.query(
-              `SELECT username,
+              `SELECT email,
                       password,
                       first_name AS "firstName",
-                      last_name AS "lastName",
-                      email
+                      last_name AS "lastName"
                FROM users
-               WHERE username = $1`,
-            [username],
+               WHERE email = $1`,
+            [email],
         );
     
         const user = result.rows[0];
@@ -28,28 +27,28 @@ class User {
             return user;
           };
         };
-        throw new UnauthorizedError("Invalid username/password");
+        throw new UnauthorizedError("Invalid email/password");
     };
     
     // Create new user
-    static async create({ username, password, firstName, lastName, email }) {
+    static async create({ email, password, firstName, lastName }) {
         const duplicateCheck = await db.query(
-            `SELECT username
+            `SELECT email
                 FROM users
-                WHERE username = $1`,
-            [username],
+                WHERE email = $1`,
+            [email],
         );
 
         if (duplicateCheck.rows[0]) {
-            throw new BadRequestError(`Duplicate username: ${username}`);
+            throw new BadRequestError(`Duplicate username: ${email}`);
         };
 
         const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
         const result = await db.query(
             `INSERT INTO users
-            VALUES ($1, $2, $3, $4, $5, $6)
-            RETURNING username, first_name AS "firstName", last_name AS "lastName", email`,
-            [username, hashedPassword, firstName, lastName, email]
+            VALUES ($1, $2, $3, $4)
+            RETURNING email, first_name AS "firstName", last_name AS "lastName"`,
+            [email, hashedPassword, firstName, lastName]
         );
         return result.rows[0]
     };
@@ -57,12 +56,11 @@ class User {
     // Get user details, including friends and artists following
     static async fetch(username) {
         const userResult = await db.query(
-            `SELECT username,
+            `SELECT email,
                     first_name AS "firstName",
-                    last_name AS "lastName",
-                    email
+                    last_name AS "lastName"
              FROM users
-             WHERE username = $1`,
+             WHERE email = $1`,
           [username]
         );
         const user = userResult.rows[0];
@@ -72,7 +70,7 @@ class User {
                     name,
                     photo_url AS "photoUrl"
              FROM artists_following
-             WHERE username = $1`,
+             WHERE email = $1`,
              [username]
         );
         const artists = artistsResult.rows
@@ -108,7 +106,7 @@ class User {
         const result = await db.query(
             `INSERT INTO artists_following
              VALUES ($1, $2, $3, $4)
-             RETURNING id, name, photo_url AS "photoUrl", username`,
+             RETURNING id, name, photo_url AS "photoUrl", email`,
              [id, name, photoUrl, username]
         );
 
@@ -119,7 +117,7 @@ class User {
     static async removeArtist({ id, username }) {
         const result = await db.query(
             `DELETE FROM artists_following
-             WHERE id=$1 AND username=$2
+             WHERE id=$1 AND email=$2
              RETURNING id`,
              [id, username]
         );
