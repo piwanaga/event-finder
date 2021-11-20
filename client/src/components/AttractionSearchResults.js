@@ -28,20 +28,20 @@ const AttractionSearchResults = ({attractionId, attractionName}) => {
 
     return (
         <>
-        {attractions ?
-            attractions.map(a => (
-                <div key={a.id}>
-                    <AttractionCardSmall 
-                        name={a.name}
-                        segment={a.classifications[0].segment ? a.classifications[0].segment.name : null}
-                        genre={a.classifications[0].genre ? a.classifications[0].genre.name : null}
-                        img={a.images[0].url}
-                        id={a.id}
-                    />
-                </div>
-            )) :
-            <p>Couldn't find anything matching your search.</p>
-        }
+            {attractions ?
+                attractions.map(a => (
+                    <div key={a.id}>
+                        <AttractionCardSmall 
+                            name={a.name}
+                            segment={a.classifications[0].segment ? a.classifications[0].segment.name : null}
+                            genre={a.classifications[0].genre ? a.classifications[0].genre.name : null}
+                            img={a.images[0].url}
+                            id={a.id}
+                        />
+                    </div>
+                )) :
+                <p>Couldn't find anything matching your search.</p>
+            }
         </>
     );
 };

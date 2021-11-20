@@ -19,7 +19,7 @@ const SearchResults = () => {
 
     return (
         <div className='flex justify-center px-3'>
-            <div className='lg:w-3/5'>
+            <div className='w-full md:w-4/5 lg:w-3/5'>
                 <div className='text-2xl mb-8'>
                     <p>Searching for <span className='font-semibold text-indigo-700'>"{keyword}"</span></p>
                 </div>

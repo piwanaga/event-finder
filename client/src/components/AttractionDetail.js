@@ -34,6 +34,12 @@ const AttractionDetail = () => {
         if (user.loggedIn) setIsFollowing(user.artists.map(a => a.id).includes(attractionId));
     }, [attractionId, dispatch, user.loggedIn, user.artists, attraction.details]);
 
+    const getImage = images => {
+        const isCorrectSize = element => element.width === 640
+        const idx = images.findIndex(isCorrectSize)
+        return images[idx].url
+    }
+
     const handleFollow = () => {
         if (user.loggedIn) {
             dispatch(addArtist({
@@ -80,7 +86,7 @@ const AttractionDetail = () => {
                 <div className='sm:grid sm:grid-cols-2 w-full'>
                     <div className='sm:order-last lg:flex lg:justify-end'>
                             {attraction.images ?
-                                <img alt={attraction.name} className='rounded mb-4 w-full' src={attraction.images[2].url}/> :
+                                <img alt={attraction.name} className='rounded mb-4 w-full' src={getImage(attraction.images)}/> :
                                 null
                             }
                     </div>
@@ -98,7 +104,7 @@ const AttractionDetail = () => {
                 <div className='w-full mt-10'>
                     {attraction.id === attractionId ?
                         <EventSearchResults attractionId={attraction.id} attractionName={attraction.name}/> :
-                        null
+                        null    
                     }
                 </div>
             </div>

@@ -26,13 +26,15 @@ const Home = () => {
     return (
         <div className='flex justify-center w-full'>
             <div className='px-3 flex flex-col lg:w-5/6 xl:w-2/3'>
-                
+                <div className='flex flex-col'>
+                    <h3 className='text-2xl font-semibold mb-6'>Top Selling</h3>
                     {Object.keys(attractions).map(a => (
                         <div key={a} className='mb-10 w-full'>
                             <AttractionCardList title={attractions[a].title} attractions={attractions[a].attractions} />
                         </div>
                     ))}
-                
+                </div>
+                <div>
                     {user.artists ? 
                         user.artists.length ?
                             <div className='mb-10 w-full'>
@@ -41,6 +43,7 @@ const Home = () => {
                             null :
                         null
                     } 
+                </div>
             </div>
         </div>
     )

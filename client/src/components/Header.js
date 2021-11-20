@@ -3,8 +3,8 @@
  * - renders search bar
 */
 
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../actions/actionCreators';
 import { searchEvents } from '../actions/actionCreators';
@@ -15,7 +15,12 @@ import Search from './Search';
 const Header = () => {
     const dispatch = useDispatch();
     const user = useSelector(store => store.userReducer.user);
-    const [navbarOpen, setNavbarOpen] = useState(false)
+    const [navbarOpen, setNavbarOpen] = useState(false);
+    const location = useLocation()
+
+    useEffect(() => {
+        setNavbarOpen(false)
+    }, [location.pathname, location.search])
 
     const handleLogout = () => {
         dispatch(logoutUser());

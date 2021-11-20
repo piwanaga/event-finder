@@ -67,7 +67,7 @@ const EventSearchResults = ({attractionId, attractionName}) => {
                 {loadMoreLink &&
                 <div className='flex justify-center'>
                     <div className='flex justify-center w-1/2 my-10'>
-                        <button onClick={handleLoadMore} className='w-full py-2 px-4 border border-blue-600 rounded hover:bg-blue-600 hover:text-white'>Load More</button>
+                        <button onClick={handleLoadMore} className='w-full py-2 px-4 border border-blue-400 rounded hover:bg-blue-400 hover:text-white'>Load More</button>
                     </div>
                 </div>
                 }

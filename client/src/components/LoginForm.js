@@ -12,8 +12,8 @@ const LoginForm = () => {
     let timeout
 
     const INITIAL_STATE = {
-        email: '',
-        password: '',
+        email: 'testuser@email.com',
+        password: 'password',
         emailError: '',
         passwordError: ''
     };
