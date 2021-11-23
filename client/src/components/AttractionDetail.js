@@ -21,6 +21,7 @@ const AttractionDetail = () => {
     const navigate = useNavigate();
     const { attractionId } = useParams();
     const [isFollowing, setIsFollowing] = useState(false);
+    // const [isLoading, setIsLoading] = useState(true)
     const attraction = useSelector(store => store.attractionsReducer.details);
     const user = useSelector(store => store.userReducer.user);
 
@@ -32,7 +33,8 @@ const AttractionDetail = () => {
         dispatch(getAttractionDetails(attractionId));
         dispatch(searchEvents({attractionId}));
         if (user.loggedIn) setIsFollowing(user.artists.map(a => a.id).includes(attractionId));
-    }, [attractionId, dispatch, user.loggedIn, user.artists, attraction.details]);
+        // setIsLoading(false)
+    }, [attractionId, user.loggedIn, user.artists, dispatch]);
 
     const getImage = images => {
         const isCorrectSize = element => element.width === 640
@@ -109,7 +111,7 @@ const AttractionDetail = () => {
                 </div>
             </div>
         </div> :
-        <p>loading</p>
+        null
     }
     </>
     );

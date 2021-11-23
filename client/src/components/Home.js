@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUser, getAttractions } from '../actions/actionCreators';
 import AttractionCardList from './AttractionCardList';
 import FavoriteArtistsHome from './FavoriteArtistsHome';
-import EventsSearchResultsHome from './EventSearchResultsHome';
+// import EventsSearchResultsHome from './EventSearchResultsHome';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const Home = () => {
 
     return (
         <div className='flex justify-center w-full'>
-            <div className='px-3 flex flex-col lg:w-5/6 xl:w-2/3'>
+            <div className='px-3 flex flex-col w-full lg:w-5/6 xl:w-2/3'>
                 <div className='flex flex-col'>
                     <h3 className='text-2xl font-semibold mb-6'>Top Selling</h3>
                     {Object.keys(attractions).map(a => (

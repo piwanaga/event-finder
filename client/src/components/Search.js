@@ -61,7 +61,7 @@ const Search = () => {
                         name='keyword'
                         value={formData.keyword}
                         onChange={handleChange}
-                        className='rounded bg-white placeholder-opacity-80 w-72 px-4 py-2 mr-3 lg:mr-2'
+                        className='rounded bg-white placeholder-opacity-80 w-72 px-4 py-2 mr-3 sm:w-80 lg:mr-2 focus:ring-0'
                     />
                     <button>
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='text-xl text-white'/>

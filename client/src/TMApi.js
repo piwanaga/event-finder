@@ -58,7 +58,7 @@ class TMApi {
     };
 
     static async getAttractionDetails(id) {
-        const res = await this.request(`/attractions/${id}`);
+        const res = await this.request(`attractions/${id}`);
         return res;
     };
 };

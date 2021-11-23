@@ -31,12 +31,12 @@ const Header = () => {
         if (user.loggedIn) {
             return (
                 <>
-                <li className='nav-item px-2 py-2 flex items-center text-lg font-semibold leading-snug text-white hover:opacity-75'>
+                <li className='nav-item px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>
                     <Link to='/profile'>
                         <button className='font-semibold mr-4'>My Profile</button>
                     </Link>
                 </li>
-                <li className='nav-item px-2 py-2 flex items-center text-lg font-semibold leading-snug text-white hover:opacity-75'>
+                <li className='nav-item px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>
                     <button onClick={handleLogout} className='font-semibold'>Logout</button>
                 </li>
                 </>
@@ -47,7 +47,7 @@ const Header = () => {
                 {/* <Link to='/register'>
                     <button className='mr-6 font-semibold'>Register</button>
                 </Link> */}
-                <li className='nav-item px-2 py-2 flex items-center text-lg font-semibold leading-snug text-white hover:opacity-75'>
+                <li className='nav-item px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>
                     <Link to='/login'>
                         <button className='font-semibold'>Login</button>
                     </Link>
@@ -67,7 +67,7 @@ const Header = () => {
     };
     
     return (
-        <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 lg:py-6 bg-blue-500 mb-3">
+        <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 lg:py-8 bg-gray-800 mb-3">
             <div className="container px-2 mx-auto flex flex-wrap items-center justify-between lg:px-0">
                 <div className="w-full px-1 relative flex justify-between lg:px-0 lg:w-auto lg:static lg:block lg:justify-start lg:mr-6">
                     <Link
@@ -94,15 +94,15 @@ const Header = () => {
                 >
                     <div className='lg:flex lg:flex-row'>
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                            <Search/>
+                            <Search />
                             <li className="nav-item lg:ml-6">
-                                <button onClick={() => handleClick('music')} className='px-2 py-2 flex items-center text-lg font-semibold leading-snug text-white hover:opacity-75'>Concerts</button>
+                                <button onClick={() => handleClick('music')} className='px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>Concerts</button>
                             </li>
                             <li className="nav-item">
-                                <button onClick={() => handleClick('sports')} className='px-2 py-2 flex items-center text-lg font-semibold leading-snug text-white hover:opacity-75'>Sports</button>
+                                <button onClick={() => handleClick('sports')} className='px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>Sports</button>
                             </li>
                             <li className="nav-item">
-                                <button onClick={() => handleClick('arts&theatre')} className='px-2 py-2 flex items-center text-lg font-semibold leading-snug text-white hover:opacity-75'>Arts & Theater</button>
+                                <button onClick={() => handleClick('arts&theatre')} className='px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>Arts & Theater</button>
                             </li>
                         </ul>
                     </div>

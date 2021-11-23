@@ -18,16 +18,20 @@ const Discover = () => {
     // }
     // const [queries, setQueries] = useState(INITIAL_STATE)
 
+    const capitalizeFirstLetter = str => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
     const renderHeading = () => {
         return (
             <div className='text-2xl mb-10'>
-            <p className='inline'>Showing upcoming <span className='font-semibold text-indigo-700'>{classificationName}</span> events</p>
+            <p className='inline'>Showing upcoming <span className='font-semibold text-indigo-700'>{capitalizeFirstLetter(classificationName)}</span> events</p>
             {location ? 
-                <p className='inline'> near <span className='font-semibold text-indigo-700'>{location}</span></p> : 
+                <p className='inline'> near <span className='font-semibold text-indigo-700'>{capitalizeFirstLetter(location)}</span></p> : 
                 null
             }
             {startDateTime ?
-                <p className='inline'> starting <span className='font-semibold text-indigo-700'>{dayjs(startDateTime).format('MMM D YYYY')}</span></p> :
+                <p className='inline'> starting <span className='font-semibold text-indigo-700'>{dayjs(startDateTime).format('MMM D, YYYY')}</span></p> :
                 null
             }
             </div>
@@ -35,16 +39,18 @@ const Discover = () => {
     }
 
     return (
-        <div className='flex justify-center px-3'>
-            <div className='lg:w-3/5'>
-                <div>
-                    {renderHeading()}
-                </div>
-                <div className='mb-10'>
-                    <EventFilters />
-                </div>
-                <div>
-                    <EventSearchResults />
+        <div className='px-3'>
+            <div className='w-full flex justify-center '>
+                <div className='md:w-4/5 lg:w-3/5'>
+                    <div>
+                        {renderHeading()}
+                    </div>
+                    <div className='mb-10'>
+                        <EventFilters />
+                    </div>
+                    <div>
+                        <EventSearchResults />
+                    </div>
                 </div>
             </div>
         </div>

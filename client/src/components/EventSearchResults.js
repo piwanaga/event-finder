@@ -31,6 +31,12 @@ const EventSearchResults = ({attractionId, attractionName}) => {
         dispatch(loadMore(loadMoreLink));
     };
 
+    const getImage = images => {
+        const isCorrectSize = element => element.width === 205
+        const idx = images.findIndex(isCorrectSize)
+        return images[idx].url
+    }
+
     return (
         <>
         {events ? 
@@ -55,7 +61,7 @@ const EventSearchResults = ({attractionId, attractionName}) => {
                             name={e.name} 
                             date={e.dates.start.localDate}
                             time={e.dates.start.localTime}
-                            img={e.images[2].url}
+                            img={getImage(e.images)}
                             id={e.id}
                             ticketUrl={e.url}
                             venue={e._embedded ? e._embedded.venues[0].name : null}
@@ -67,7 +73,7 @@ const EventSearchResults = ({attractionId, attractionName}) => {
                 {loadMoreLink &&
                 <div className='flex justify-center'>
                     <div className='flex justify-center w-1/2 my-10'>
-                        <button onClick={handleLoadMore} className='w-full py-2 px-4 border border-blue-400 rounded hover:bg-blue-400 hover:text-white'>Load More</button>
+                        <button onClick={handleLoadMore} className='w-full py-2 px-4 border border-blue-400 rounded transition-colors duration-200 ease-in-out hover:bg-blue-400 hover:text-white'>Load More</button>
                     </div>
                 </div>
                 }
