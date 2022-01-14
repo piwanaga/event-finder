@@ -4,6 +4,7 @@ const cors = require('cors');
 const User = require('../models/User');
 
 const router = new express.Router();
+// Headers for enabling cors
 const headers = {
     'Access-Control-Request-Headers': 'application/json',
     'Access-Control-Allow-Origin': 'https://event-finder.surge.sh',

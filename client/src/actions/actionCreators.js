@@ -2,6 +2,8 @@ import axios from 'axios';
 import { 
         CREATE_USER, 
         LOGIN_USER, 
+        LOGIN_ERROR,
+        CLEAR_LOGIN_ERROR,
         GET_USER, 
         UPDATE_USER, 
         LOGOUT_USER, 
@@ -66,7 +68,7 @@ export const loginUser = data => {
             dispatch(loggedInUser(res.data.user));
         } catch (e) {
             console.log(e)
-            return e
+            dispatch(loginError()) 
         };
     };
 };
@@ -75,6 +77,19 @@ const loggedInUser = user => {
     return {
         type: LOGIN_USER,
         user
+    };
+};
+
+const loginError = () => {
+    return {
+        type: LOGIN_ERROR,
+        error: true
+    }
+}
+
+export const clearLoginError = () => {
+    return {
+        type: CLEAR_LOGIN_ERROR
     };
 };
 

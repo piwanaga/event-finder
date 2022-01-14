@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {API_KEY} from './secrets';
+import { API_KEY } from './secrets';
 
 const BASE_URL = 'https://app.ticketmaster.com/discovery/v2';
 

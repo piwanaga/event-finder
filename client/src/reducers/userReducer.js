@@ -10,6 +10,8 @@ import {
     GET_USER, 
     UPDATE_USER, 
     LOGIN_USER, 
+    LOGIN_ERROR,
+    CLEAR_LOGIN_ERROR,
     LOGOUT_USER, 
     ADD_ARTIST, 
     REMOVE_ARTIST, 
@@ -18,18 +20,23 @@ import {
 const INITIAL_STATE = {
 user: {
     loggedIn: false,
-    artists: []
+    artists: [],
+    error: false
 }
 };
 
 const userReducer = (state=INITIAL_STATE, action) => {
 switch(action.type) {
     case CREATE_USER:
-        return {...state, user: {...action.user, loggedIn: true}};
+        return {...state, user: {...action.user, loggedIn: true, error: false}};
     case LOGIN_USER:
-        return {...state, user: {...action.user, loggedIn: true}};
+        return {...state, user: {...action.user, loggedIn: true, error: false}};
+    case LOGIN_ERROR:
+        return {...state, user: {...state.user, error: action.error}};
+    case CLEAR_LOGIN_ERROR:
+        return {...state, user: {...state.user, error: false}};
     case GET_USER:
-        return {...state, user: {...action.user, loggedIn: true}};
+        return {...state, user: {...action.user, loggedIn: true, error: false}};
     case UPDATE_USER:
         return {...state, 
             user: {

@@ -19,7 +19,14 @@ const Discover = () => {
     // const [queries, setQueries] = useState(INITIAL_STATE)
 
     const capitalizeFirstLetter = str => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        return str.split(' ').reduce((acc, e) => {
+            if ((/[a-zA-Z]/).test(e[0])) {
+                return acc + e.charAt(0).toUpperCase() + e.slice(1) + " ";
+            } else {
+                return acc + e + " "
+            }
+        }, "")
+        
       }
 
     const renderHeading = () => {

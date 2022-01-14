@@ -3,7 +3,7 @@
  * - filters for date, classification, radius, sort by
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchEvents } from '../actions/actionCreators';
 import dayjs from 'dayjs';
@@ -17,7 +17,7 @@ const EventFilters = ({ attractionId }) => {
     const { search } = useLocation();
     let { location, keyword, startDateTime, sort, radius, classificationName } = queryString.parse(search);
     if (classificationName === 'arts') classificationName = 'arts&theatre';
-    
+
     const INITIAL_STATE = {
         startDateTime: startDateTime || dayjs().format(),
         location: location || '',
@@ -25,11 +25,12 @@ const EventFilters = ({ attractionId }) => {
         sort: sort || 'date,asc',
         radius: radius || '50'
     };
+
     const [filterData, setFilterData] = useState(INITIAL_STATE);
 
-    // useEffect(() => {
-    //     setFilterData(INITIAL_STATE)
-    // }, [location, keyword, classificationName, startDateTime])
+    useEffect(() => {
+        setFilterData(INITIAL_STATE)
+    }, [location, keyword, classificationName, startDateTime]);
 
     // const handleDateChange = date => {
     //     const formattedDate = dayjs(date).format('YYYY-MM-DDTHH:mm:ss')
@@ -73,7 +74,7 @@ const EventFilters = ({ attractionId }) => {
                         value={filterData.location}
                         onChange={handleChange}
                         placeholder='Enter city or zip'
-                        className='border-blue-500 rounded mb-2 w-full'
+                        className='border-gray-500 rounded mb-2 w-full'
                     />
                     <input 
                         type='date'
@@ -81,7 +82,7 @@ const EventFilters = ({ attractionId }) => {
                         name='startDateTime'
                         value={filterData.startDateTime}
                         onChange={handleChange}
-                        className='border-blue-500 rounded w-full'
+                        className='border-gray-500 rounded w-full'
                     />
                 </div>
                 <div>
