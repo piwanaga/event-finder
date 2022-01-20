@@ -1,6 +1,7 @@
 const express = require('express');
 const { createToken } = require('../helpers/tokens');
 const cors = require('cors');
+const { PORT } = require("../config");
 const User = require('../models/User');
 
 const router = new express.Router();
@@ -14,7 +15,7 @@ const headers = {
 
 router.post("/login", cors(), async (req, res, next) => {
     try { 
-        res.set(headers)
+        if (PORT !== 3001) res.set(headers)
         const { email, password } = req.body;
         const user = await User.authenticate(email, password);
         const token = createToken(user);
@@ -27,7 +28,7 @@ router.post("/login", cors(), async (req, res, next) => {
 router.post('/register', cors(), async (req, res, next) => {
     try {
         // create token with username
-        res.set(headers)
+        if (PORT !== 3001) res.set(headers)
         const user = await User.create(req.body)
         const token = createToken(user);
         return res.json({ user, token })
@@ -41,7 +42,7 @@ router.post('/register', cors(), async (req, res, next) => {
 
 router.get('/:username', cors(), async (req, res, next) => {
     try {
-        res.set(headers)
+        if (PORT !== 3001) res.set(headers)
         const user = await User.fetch(req.params.username);
         return res.json({ user });
     } catch (e) {
@@ -60,7 +61,7 @@ router.get('/:username', cors(), async (req, res, next) => {
 
 router.post('/:username/artists', cors(), async (req, res, next) => {
     try {
-        res.set(headers)
+        if (PORT !== 3001) res.set(headers)
         const artist = await User.addArtist(req.body);
         return res.json({ artist });
     } catch (e) {
@@ -70,7 +71,7 @@ router.post('/:username/artists', cors(), async (req, res, next) => {
 
 router.delete('/:username/artists', cors(), async (req, res, next) => {
     try {
-        res.set(headers)
+        if (PORT !== 3001) res.set(headers)
         const id = await User.removeArtist(req.body);
         return res.json(id);
     } catch (e) {
