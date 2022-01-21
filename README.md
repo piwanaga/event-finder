@@ -4,28 +4,28 @@ This project is designed for users to be able to browse and search live events, 
 
 Users can:
 
-* browse popular attractions from the homepage
-* search for specific events or attractions by keyword
-* browse events by genre 
-* create an account and save favorite attractions
+* Browse popular attractions from the homepage
+* Search for specific events or attractions by keyword
+* Browse events by genre 
+* Create an account and save favorite attractions
 
 ## Live Page
 [https://event-finder.surge.sh/](https://event-finder.surge.sh/)
 
 This includes a "test" login that can be used by clicking on "Login" from the homepage and logging in using the pre-filled credentials. 
 
-##Tech Used
+## Tech Used
 * Node, Express, PostgreSQL, BCrypt, JSON Web Tokens
 * React, Redux, TailwindCSS
 
 ## To Run Locally
-####Clone repo.
+#### Clone repo.
 
 ```
 git clone https://github.com/piwanaga/vet-wait.git
 ```
 
-####Install packages.
+#### Install packages.
 
 * ```cd``` into project directory
 
@@ -37,7 +37,7 @@ git clone https://github.com/piwanaga/vet-wait.git
 	* ```cd client```
 	* ```npm install```
 
-####Add secrets file and API Key
+#### Add secrets file and API Key
 * You can sign up for your own Ticketmaster API Key [here](https://developer-acct.ticketmaster.com/user/register):  
 * From project root directory:
 	* ```cd client/src```
@@ -46,7 +46,7 @@ git clone https://github.com/piwanaga/vet-wait.git
 
 	*	```export const API_KEY = <YOUR_API_KEY>```
 
-####Create database
+#### Create database
 * ```cd``` into server directory
 * Create database:
 	* ```createdb event_finder```
@@ -56,7 +56,7 @@ git clone https://github.com/piwanaga/vet-wait.git
 	* ```psql -d event_finder_dev -f data.sql```
 	* This is optional. You can also just create a new account.
 
-####Run in local server.
+#### Run in local server.
 You will need to run both the server and client separately.
 
 * To run server:
