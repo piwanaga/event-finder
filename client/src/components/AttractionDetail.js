@@ -21,19 +21,13 @@ const AttractionDetail = () => {
     const navigate = useNavigate();
     const { attractionId } = useParams();
     const [isFollowing, setIsFollowing] = useState(false);
-    // const [isLoading, setIsLoading] = useState(true)
     const attraction = useSelector(store => store.attractionsReducer.details);
     const user = useSelector(store => store.userReducer.user);
-
-    // const checkIfFollowing = () => {
-    //     if (user.loggedIn) setIsFollowing(user.artists.map(a => a.id).includes(attractionId));
-    // };
 
     useEffect(() => {
         dispatch(getAttractionDetails(attractionId));
         dispatch(searchEvents({attractionId}));
         if (user.loggedIn) setIsFollowing(user.artists.map(a => a.id).includes(attractionId));
-        // setIsLoading(false)
     }, [attractionId, user.loggedIn, user.artists, dispatch]);
 
     const getImage = images => {

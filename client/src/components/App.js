@@ -4,17 +4,6 @@ import Header from './Header';
 import Footer from './Footer';
 
 const App = () => {
-  // const getLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(showPosition);
-  //   } else {
-  //     console.log('geolocation not supported')
-  //   }
-  // }
-
-  // const showPosition = pos => {
-  //   console.log(`latitude: ${pos.coords.latitude}, longitude: ${pos.coords.longitude}`)
-  // }
 
   return (
     <div className='flex flex-col min-h-screen'>

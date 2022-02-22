@@ -10,9 +10,6 @@ import SearchResults from './SearchResults';
 import AttractionDetail from './AttractionDetail';
 import Discover from './Discover';
 import LoginForm from './LoginForm';
-// import EditProfileForm from './EditProfileForm';
-// import ArtistsList from './ArtistsList';
-// import EventDetail from './EventDetail';
 
 const RoutesComponent = () => {
     return (    

@@ -19,7 +19,6 @@ const Home = () => {
         if (storedToken) {
           dispatch(getUser(storedToken));
         };
-        // getLocation()
         dispatch(getAttractions());
       }, [storedToken, dispatch, user.loggedIn]);
 

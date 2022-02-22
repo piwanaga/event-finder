@@ -44,9 +44,6 @@ const Header = () => {
         } else {
             return(
                 <>
-                {/* <Link to='/register'>
-                    <button className='mr-6 font-semibold'>Register</button>
-                </Link> */}
                 <li className='nav-item px-2 py-2 flex items-center font-semibold leading-snug text-white hover:opacity-75'>
                     <Link to='/login'>
                         <button className='font-semibold'>Login</button>
@@ -111,11 +108,6 @@ const Header = () => {
                             {renderUserLinks()}
                         </ul>
                     </div>
-                    
-                            
-                            
-                    
-                    
                 </div>
             </div>  
         </nav>

@@ -32,11 +32,6 @@ const EventFilters = ({ attractionId }) => {
         setFilterData(INITIAL_STATE)
     }, [location, keyword, classificationName, startDateTime]);
 
-    // const handleDateChange = date => {
-    //     const formattedDate = dayjs(date).format('YYYY-MM-DDTHH:mm:ss')
-    //     setFilterData(data => ({...data, startDateTime: formattedDate}));
-    // };
-
     const handleChange = evt => {
         const {name, value} = evt.target;
         setFilterData(data => ({...data, [name]: value}))
@@ -47,7 +42,6 @@ const EventFilters = ({ attractionId }) => {
         if (attractionId) {
             dispatch(searchEvents({ 
                 attractionId, 
-                // sort: filterData.sort,
                 startDateTime: dayjs(filterData.startDateTime).format()}));
         } else {
             dispatch(searchEvents({

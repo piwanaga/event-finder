@@ -43,7 +43,6 @@ const Search = () => {
             dispatch(searchEvents(formData));
             navigate({
                 pathname: '/search',
-                // search: `?location=${formData.location}&keyword=${formData.keyword}`,
                 search: `?keyword=${formData.keyword}`
             });
         } catch (e) {

@@ -11,13 +11,6 @@ const Discover = () => {
 
     if (classificationName === 'arts') classificationName = 'arts & theater' 
 
-    // const INITIAL_STATE = {
-    //     location: location || null,
-    //     startDateTime: startDateTime || null,
-    //     classificationName: classificationName 
-    // }
-    // const [queries, setQueries] = useState(INITIAL_STATE)
-
     const capitalizeFirstLetter = str => {
         return str.split(' ').reduce((acc, e) => {
             if ((/[a-zA-Z]/).test(e[0])) {
@@ -26,7 +19,6 @@ const Discover = () => {
                 return acc + e + " "
             }
         }, "")
-        
       }
 
     const renderHeading = () => {
